@@ -1,0 +1,26 @@
+Category,Guideline,Success Criteria,No. of Errors,No. of Errors (33-64),Total Errors (Final)
+Perceivable,1.1.1,img element missing alt attribute.,10,13,23
+Perceivable,1.1.1,Image used as anchor is missing valid Alt text.,22,30,52
+Perceivable,1.3.1,"input element, type of ""text"", has no text in label",15,21,36
+Perceivable,1.3.1,"input element, type of ""text"", missing an associated label.",17,18,35
+Perceivable ,1.3.1,"input element, type of ""checkbox"", has no text in label.",0,9,9
+Perceivable ,1.3.1,"input element, type of ""radio"", has no text in label.",0,4,4
+Perceivable ,1.3.1,Form missing fieldset and legend to group multiple radio buttons.,0,5,5
+Perceivable,1.3.2,The contrast between the colour of text and its background for the element is not sufficient to meet WCAG2.0 Level AA.,10,63,73
+Perceivable,1.3.2,The contrast between the colour of visited link text and its background for the element is not sufficient to meet WCAG2.0 Level AA.,0,3,3
+Perceivable,1.3.2,The contrast between the colour of active link text and its background is not sufficient to meet WCAG2.0 Level AA.,0,15,15
+Perceivable,1.3.2,The contrast between the colour of selected link text and its background is not sufficient to meet WCAG2.0 Level AA,0,2,2
+Perceivable,1.4.4,i (italic) element used,28,95,123
+Perceivable,1.4.4,b (bold) element used.,6,24,30
+Operable,2.1.1,onmousedown event missing onkeydown event.,1,0,1
+Operable,2.1.1,script not keyboard accessible - onmouseout missing onblur.,0,1,1
+Operable,2.1.1,onmouseover event handler missing onfocus event handler.,0,1,1
+Operable,2.4.2,Document missing title element.,1,2,3
+Operable,2.4.2,title element is empty,3,1,4
+Operable,2.4.4,Anchor contains no text.,36,37,73
+Operable,2.4.6,Header nesting,21,9,30
+Understandable,3.1.1,Document language not identified.,2,2,4
+Understandable,3.1.1,Document has invalid language code.,2,1,3
+Understandable,3.3.2,Label text is empty,18,12,30
+Understandable,3.3.2,input element has more than one associated label.,1,0,1
+Robust,4.1.1,id attribute is not unique.,9,5,14

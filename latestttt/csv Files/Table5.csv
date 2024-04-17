@@ -1,0 +1,21 @@
+Category,Guideline,Success Criteria,No. of Errors,No. of Errors (33-64),Total Errors (Final)
+Perceivable,1.1.1,img element missing alt attribute.,42,22,64
+Perceivable,1.1.1,Image used as anchor is missing valid Alt text.,25,32,57
+Perceivable,1.3.1,"input element, type of ""text"" has no text in label",16,24,40
+Perceivable,1.3.1,"input element, type of ""text"", missing an associated label.",18,26,44
+Perceivable ,1.3.1,"input element, type of ""checkbox"", has no text in label.",0,19,19
+Perceivable ,1.3.1,"input element, type of ""radio"", has no text in label.",0,4,4
+Perceivable ,1.3.1,Form missing fieldset and legend to group multiple radio buttons.,0,5,5
+Perceivable ,1.3.1,select element missing an associated label,0,24,24
+Perceivable ,1.3.1,Label text is empty for select element.,0,1,1
+Operable,2.1.1,onmousedown event missing onkeydown event.,1,0,1
+Operable,2.1.1,script not keyboard accessible - onmouseout missing onblur.,0,1,1
+Operable,2.1.1,onmouseover event handler missing onfocus event handler.,0,1,1
+Operable,2.4.2,Document missing title element.,1,0,1
+Operable,2.4.2,title element is empty,3,1,4
+Operable,2.4.4,Anchor contains no text.,34,39,73
+Understandable,3.1.1,Document language not identified.,3,3,6
+Understandable,3.1.1,Document has invalid language code.,1,3,4
+Understandable,3.3.2,Label text is empty,29,53,82
+Understandable,3.3.2,input element has more than one associated label.,1,0,1
+Robust,4.1.1,id attribute is not unique,9,6,15

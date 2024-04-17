@@ -1,0 +1,15 @@
+Error Type,No. Errors (1-32),No. Errors (33-64),Total,Error %
+Empty form label,13,12,25,7.49%
+Missing form label,30,23,53,15.87%
+Multiple form labels,4,2,6,1.80%
+Broken ARIA reference,30,23,53,15.87%
+Linked image missing alternative text,4,3,7,2.10%
+Spacer image mising alternative text,1,0,1,0.30%
+Image map missing alternative text,3,3,6,1.80%
+Missing form label,1,0,1,0.30%
+Missing alternative text,23,17,40,11.98%
+Language mising or invalid,6,3,9,2.69%
+Empty Button,45,19,64,19.16%
+Empty link,34,23,57,17.07%
+Empty heading,6,5,11,3.29%
+Broken skip link,1,0,1,0.30%

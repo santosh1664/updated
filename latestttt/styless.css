@@ -1,0 +1,240 @@
+/* Color Palette */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue */
+    --secondary-color: #3498db; /* Blue */
+    --accent-color: #000000; /* Red */
+    --text-color: #000; /* Dark Gray */
+    --background-color: #fff; /* White */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    justify-content: justify;
+}
+.h2{
+  text-align: justify;
+  color: var(--text-color);
+}
+.p{
+  text-align: justify;
+  color: var(--text-color);
+  font-size: 35px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid var(--primary-color);
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: var(--background-color);
+}
+
+tr:hover {
+    background-color: var(--secondary-color);
+}
+
+nav {
+  background-color: #007bb5;
+  color: #A0E9FF;
+  
+  padding: 0px 0px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ul {
+  list-style-type: none;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  
+}
+li {
+    display: inline-block;
+    margin-right:75px;
+    /*
+    padding: 10px 10px;
+    margin: 0;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    */
+  
+}
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+a:hover {
+    background-color: var(--secondary-color);
+    background-color: #66cfd8;
+    padding: 10px 10px;
+}
+
+.contact-icons {
+    margin: 0;
+    padding: 0px;
+}
+
+.fa {
+    padding: 5px;
+    font-size: 2%;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 80px;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+  /* Facebook */
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  /* LinkedIn */
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+/* Google */
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+  /* Twitter */
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+
+bdy {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    background-image: url("https://st4.depositphotos.com/13349494/23275/i/450/depositphotos_232751862-stock-photo-dark-blue-shabby-wooden-background.jpg");
+}
+body {
+    height: 100%;
+    padding: 20px;
+    margin: 0;
+  }
+  
+ 
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  /* Create four equal columns that floats next to each other */
+  .column1 {
+    float: left;
+    width: 50%;
+    padding:10px;
+    height: 400px;
+    margin: auto;
+  }
+  .column5{
+    float: left;
+    width: 50%;
+    height: 500px;
+    margin: auto;
+  }
+
+  .column2 {
+    float: left;
+    width: 100%;
+    padding:10px;
+    height: 400px; /* Should be removed. Only for demonstration */
+    margin:auto;
+  }
+  .column3 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 700px; /* Should be removed. Only for demonstration */
+  }
+  .column4 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+
+  #baseImg1
+  {
+    padding-left:15%;
+    padding-top:2%;
+  }
+  #baseImg2
+  {
+    padding-left:5%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+  contain: layout;
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  .card {
+    background-color: transparent;
+    text-decoration: center;
+    height: 50px;
+    width: 50px;
+  }
+  
+}
+#horizontal
+{
+  height:4px;
+  background-color:#000000;
+}
+footer
+{
+  background-color:#f1f3f4;
+}
