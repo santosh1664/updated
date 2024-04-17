@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Web Accessibility</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>ICT Web Accessibility<h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index2.html">Verified Sites Portal</a></li>
+                    <li><a href="Top10.html">Top 10</a></li>
+                    <!-- <li><a href="Top20.html">Top 20</a></li> -->
+                    <!-- <li><a href="contact">Contact</a></li> -->
+                    <li><a href="table2.html">Achecker</a></li>
+                    <li><a href="table3.html">Level AA</a></li>
+                    <li><a href="table4.html">level A error rate %</a></li>
+                    <li><a href="table5.html">A checker to A</a></li>
+                    <li><a href="table6.html">A Checker to AA Checker</a></li>
+                    <li><a href="table8.html">Wave Tool</a></li>
+                </ul>
+            </nav>
+    </header>
+    <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 3</p>
+    <p style = "text-align:center;font-size:150%;font-weight:200;"> Table 3 The average known Level A errors according to WCAG 2.0-POUR principcles per education institution, including their college websites</p>
+    <p style = "text-align:center;font-size:150%;font-weight:200;">The error rate percentage and performance level are categorized as follows: high (0–33.3%), medium
+        (33.4–66.6%) and low (66.7–100.0%) P perceivable, O operable, U understandable, R robust.</p>
+    <main>
+        <div>
+            <label for="limit-select">Show:</label>
+            <select id="limit-select">
+                 <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="64"selected>All</option>
+            </select>
+        </div>
+        <div id="table-container"></div>
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const limitSelect = document.getElementById('limit-select');
+            const tableContainer = document.getElementById('table-container');
+
+            const fetchDataAndRenderTable = function() {
+                const limit = parseInt(limitSelect.value);
+                fetch('https://raw.githubusercontent.com/santosh1664/egovern/csv/csv%20Files/Table3.csv')
+                    .then(response => response.text())
+                    .then(csv => {
+                        let rows = csv.split('\n').slice(1); // Slice from 0 to include header row
+                        if (limit !== 0) {
+                            rows = rows.slice(0, limit);
+                        }
+                        let tableHtml = '<table>';
+                        let i = 0;
+                        tableHtml += '<thead>';
+                                tableHtml += '<tr>';
+                                    tableHtml += '<th style="text-align:center;">ID</th>';
+                                    tableHtml += '<th style="text-align:center;">Ranking</th>';
+                                    tableHtml += '<th style="text-align:center;">P</th>';
+                                    tableHtml += '<th style="text-align:center;">O</th>';
+                                    tableHtml += '<th style="text-align:center;">U</th>';
+                                    tableHtml += '<th style="text-align:center;">R</th>';
+                                    tableHtml += '<th style="text-align:center;">Error %</th>';
+                                    tableHtml += '<th style="text-align:center;">Performance</th>';
+                                tableHtml +='</tr>';
+                            tableHtml += '</thead>';
+                        rows.forEach(row => {
+                                const columns = row.split(',');
+                                tableHtml += '<tr>';
+                                
+                                columns.forEach(column => {
+                                tableHtml += `<td>${column}</td>`;
+                                });
+                                tableHtml += '</tr>';
+
+                        });
+                        tableHtml += '</table>';
+                        tableContainer.innerHTML = tableHtml;
+                    })
+                    .catch(error => console.error('Error fetching CSV:', error));
+            };
+
+            // Initial data fetch and table rendering
+            fetchDataAndRenderTable();
+
+            // Event listener for select element change
+            limitSelect.addEventListener('change', fetchDataAndRenderTable);
+        });
+    </script>
+    <hr id="horizontal">
+    <footer>
+        <div id="contact" align="center">
+            <h2>Contact Us</h2>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +1234567890</p>
+            <p>Address: 123 Street, City, Country</p>
+                <div class="contact-icons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google",></a>
+                <a href="#" class="fa fa-linkedin"></a>
+            </div>  
+        </div>
+            <div>
+                <p>&copy; 2024 Govt Websites. All rights reserved.</p>
+            </div>
+    </footer>
+</body>
+</html>

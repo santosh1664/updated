@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Web Accessibility</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>ICT Web Accessibility<h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index2.html">Verified Sites Portal</a></li>
+                    <li><a href="Top10.html">Top 10</a></li>
+                    <!-- <li><a href="Top20.html">Top 20</a></li> -->
+                    <!-- <li><a href="contact">Contact</a></li> -->
+                    <li><a href="table2.html">Achecker</a></li>
+                    <li><a href="table3.html">Level AA</a></li>
+                    <li><a href="table4.html">level A error rate %</a></li>
+                    <li><a href="table5.html">A checker to A</a></li>
+                    <li><a href="table6.html">A Checker to AA Checker</a></li>
+                    <li><a href="table8.html">Wave Tool</a></li>
+                </ul>
+            </nav>
+    </header>
+    <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 6</p>
+    <p style = "text-align:center;font-size:150%;font-weight:200;"> Table 6 A list of the most common known accessibility problems according to 
+        AChecker tool Level AA</p>
+    <main>
+        <div>
+            <label for="limit-select">Show:</label>
+            <select id="limit-select">
+                 <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="64"selected>All</option>
+            </select>
+        </div>
+        <div id="table-container"></div>
+    </main>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const limitSelect = document.getElementById('limit-select');
+            const tableContainer = document.getElementById('table-container');
+
+            const fetchDataAndRenderTable = function() {
+                const limit = parseInt(limitSelect.value);
+                fetch('https://raw.githubusercontent.com/santosh1664/egovern/csv/csv%20Files/Table5.csv')
+                    .then(response => response.text())
+                    .then(csv => {
+                        
+                        let rows = csv.split('\n').slice(1); // Slice from 0 to include header row
+                        if (limit !== 0) {
+                            rows = rows.slice(0, limit);
+                        }
+                        let tableHtml = '<table>';
+                            tableHtml += '<tr class="tab5R">';
+                                tableHtml += '<td>';
+                                    tableHtml += '<button class="dropdown" style="border:none;">Perceivable</button>';
+                                    tableHtml += '<div class="contents" style="display:none; text-align:left;background-color:white;">';
+                                        tableHtml += '<p><b><u>Category</u></b>\t<u><b>Guideline</u></b>\t<u><b>Success Criteria</u></b>\t<u><b>No. of errors(1-32)</u></b>\t<u><b>No. of errors(33-64)</u></b>\t<u><b>Total errors</u></b></p>';
+                                        let j = 0;
+                                        rows.forEach(row => {
+                                            if( j <= 8)
+                                            {
+                                                const columns = row.split(',');
+                                                tableHtml += '<p>';
+                                                columns.forEach(column => {
+                                                tableHtml += `${column}\t`;
+                                                });
+                                                tableHtml += '</p>';
+                                            }
+                                            j++;
+                                        });
+                                    tableHtml += '</div>';
+                                tableHtml += '</td>';
+                            tableHtml += '</tr>';
+                            tableHtml += '<tr class="tab5R">';
+                                tableHtml += '<td>';
+                                    tableHtml += '<button class="dropdown">Operable</button>';
+                                    tableHtml += '<div class="contents" style="display:none;text-align:left;">';
+                                        tableHtml += '<p><b><u>Category</u></b>\t<u><b>Guideline</u></b>\t<u><b>Success Criteria</u></b>\t<u><b>No. of errors(1-32)</u></b>\t<u><b>No. of errors(33-64)</u></b>\t<u><b>Total errors</u></b></p>';
+                                        let rows1 = csv.split('\n').slice(10); // Slice from 0 to include header row
+                                        let k = 0;
+                                        rows1.forEach(row1 => {
+                                            if( k <= 5)
+                                            {
+                                                const columns1 = row1.split(',');
+                                                tableHtml += '<p>';
+                                                columns1.forEach(column1 => {
+                                                tableHtml += `${column1}\t`;
+                                                });
+                                                tableHtml += '</p>';
+                                            }
+                                            k++;
+                                        });
+                                    tableHtml += '</div>';
+                                tableHtml += '</td>';
+                            tableHtml += '</tr>';
+                            tableHtml += '<tr class="tab5R">';
+                                tableHtml += '<td>';
+                                    tableHtml += '<button class="dropdown">Understandable</button>';
+                                    tableHtml += '<div class="contents" style="display:none;text-align:left;">';
+                                        tableHtml += '<p><b><u>Category</u></b>\t<u><b>Guideline</u></b>\t<u><b>Success Criteria</u></b>\t<u><b>No. of errors(1-32)</u></b>\t<u><b>No. of errors(33-64)</u></b>\t<u><b>Total errors</u></b></p>';
+                                        let rows2 = csv.split('\n').slice(16); // Slice from 0 to include header row
+                                        let l = 0;
+                                        rows2.forEach(row2 => {
+                                            if( l <= 3)
+                                            {
+                                                const columns2 = row2.split(',');
+                                                tableHtml += '<p>';
+                                                columns2.forEach(column2 => {
+                                                tableHtml += `${column2}\t`;
+                                                });
+                                                tableHtml += '</p>';
+                                            }
+                                            l++;
+                                        });
+                                    tableHtml += '</div>';
+                                tableHtml += '</td>';
+                            tableHtml += '</tr>';
+                            tableHtml += '<tr class="tab5R">';
+                                tableHtml += '<td>';
+                                    tableHtml += '<button class="dropdown">Robust</button>';
+                                    tableHtml += '<div class="contents" style="display:none;text-align:center;">';
+                                        tableHtml += '<p><b><u>Category</u></b>\t<u><b>Guideline</u></b>\t<u><b>Success Criteria</u></b>\t<u><b>No. of errors(1-32)</u></b>\t<u><b>No. of errors(33-64)</u></b>\t<u><b>Total errors</u></b></p>';
+                                        let rows3 = csv.split('\n').slice(20); // Slice from 0 to include header row
+                                        let m = 0;
+                                        rows3.forEach(row3 => {
+                                            if( m <= 3)
+                                            {
+                                                const columns3 = row3.split(',');
+                                                tableHtml += '<p>';
+                                                columns3.forEach(column3 => {
+                                                tableHtml += `${column3}\t`;
+                                                });
+                                                tableHtml += '</p>';
+                                            }
+                                            m++;
+                                        });
+                                    tableHtml += '</div>';
+                                tableHtml += '</td>';
+                            tableHtml += '</tr>';
+                            tableHtml += '</table>';
+                            tableContainer.innerHTML = tableHtml;
+
+                            var dropdowns = document.getElementsByClassName("dropdown");
+
+// Loop through all dropdown buttons to add event listener
+for (var a = 0; a < dropdowns.length; a++) {
+    dropdowns[a].addEventListener("click", function() {
+        // Toggle the visibility of the next sibling element, which is the dropdown content
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
+                        /*
+                        let tableHtml = '<table>';
+                            tableHtml += '<thead>';
+                                tableHtml += '<th style="text-align:center;">Category</th>';
+                                tableHtml += '<th style="text-align:center;">Guidline #</th>';
+                                tableHtml += '<th style="text-align:center;">Success Criteria</th>';
+                                tableHtml += '<th style="text-align:center;">No. of errors ID(1-32)</th>';
+                                tableHtml += '<th style="text-align:center;">No. of errors ID(33-64)</th>';
+                                tableHtml += '<th style="text-align:center;">Total Errors</th>';
+                            tableHtml += '</thead>';
+                        rows.forEach(row => {
+                           
+                                const columns = row.split(',');
+                                tableHtml += '<tr>';
+                            
+                                columns.forEach(column => {
+                                    tableHtml += `<td>${column}</td>`;
+                                });
+                                
+                                tableHtml += '</tr>';
+                        });
+                        tableHtml += '</table>';
+                        tableContainer.innerHTML = tableHtml;
+                        */
+                    })
+                    .catch(error => console.error('Error fetching CSV:', error));
+            };
+
+            // Initial data fetch and table rendering
+            fetchDataAndRenderTable();
+
+            // Event listener for select element change
+            limitSelect.addEventListener('change', fetchDataAndRenderTable);
+        });
+    </script>
+    <hr id="horizontal">
+    <footer>
+        <div id="contact" align="center">
+            <h2>Contact Us</h2>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +1234567890</p>
+            <p>Address: 123 Street, City, Country</p>
+                <div class="contact-icons">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google",></a>
+                <a href="#" class="fa fa-linkedin"></a>
+            </div>  
+        </div>
+            <div>
+                <p>&copy; 2024 Govt Websites. All rights reserved.</p>
+            </div>
+    </footer>
+</body>
+</html>
