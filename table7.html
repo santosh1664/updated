@@ -4,13 +4,322 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICT Web Accessibility</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* Color Palette */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue */
+    --secondary-color: #3498db; /* Blue */
+    --accent-color: #000000; /* Red */
+    --text-color: #000; /* Dark Gray */
+    --background-color: #fff; /* White */
+    --footer-color:  #ede9b6a9;; /* cement color */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow: auto;
+}
+
+header {
+    width: 100%;
+    top: -10px;
+    background-color: var(--background-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+    justify-content: justify;
+}
+
+.p {
+    text-align: justify;
+    color: var(--text-color);
+    font-size: 35px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+main {
+    padding-top: 100px;
+}
+
+table,
+th,
+td {
+    border: 1px solid var(--primary-color);
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #63ceff;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #bcf2ff;
+}
+
+nav {
+    background-color: #53d1d7;
+    color: #a0e9ff;
+    margin-bottom: 3px;
+    display: flex;
+    position: relative;
+    width: 100%;
+    left: 0%;
+    justify-content: center;
+}
+
+ul {
+    list-style-type: none;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+li {
+    display: inline-block;
+    margin-right: 65px;
+}
+
+a {
+    text-decoration: none;
+    color: #090909;
+    font-size: 13.5px;
+    display: flex;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#links {
+    color: #000000;
+}
+
+a:hover {
+    background-color: var(--secondary-color);
+    background-color: #e9f2f3;
+    padding: 10;
+    text-decoration: underline;
+}
+
+/* Create four equal columns that floats next to each other */
+.column1 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 400px;
+    margin: auto;
+}
+
+.column5 {
+    float: left;
+    width: 50%;
+    height: 500px;
+    margin: auto;
+}
+
+.column2 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 400px;
+    margin: auto;
+}
+
+.column3 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 700px;
+}
+
+.column4 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    height: 300px;
+}
+
+#baseImg1 {
+    padding-left: 15%;
+    padding-top: 2%;
+}
+
+#baseImg2 {
+    padding-left: 5%;
+}
+
+.card {
+    background-color: transparent;
+    text-decoration: center;
+    height: 50px;
+    width: 50px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    contain: layout;
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 768px) {
+    li {
+        margin-right: 10px; /* Further reduced margin */
+    }
+
+    table {
+        font-size: 14px; /* Adjusted font size */
+    }
+}
+
+/* #horizontal {
+    height: 3px;
+    border: none;
+    background-color: #000000;
+} */
+
+footer {
+    /* position: sticky; */
+    left: 0;
+    width: 100%;
+    background-color: var(--footer-color);
+    padding: 01%;
+    box-sizing: border-box;
+    bottom: 0;
+    text-align: center;
+    line-height: 0.3;
+}
+
+.contact-icons {
+    margin: 0;
+    padding: 0px;
+}
+
+.fa {
+    padding: 5px;
+    font-size: 2%;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 80px;
+}
+
+.fa:hover {
+    opacity: 0.80;
+}
+
+.fa-phone {
+    background: #4eaa7c;
+    color: white;
+}
+
+.fa-envelope {
+    background: #dd4b39;
+    color: white;
+}
+
+.fa-facebook {
+    background: #3b5998;
+    color: white;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.fa-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55acee;
+    color: white;
+}
+
+/* Table container adjustments */
+#table-container-wrapper {
+    width: 75%; /* Adjusted width to 75% */
+    overflow-x: auto;
+    max-height: 400px; /* Adjust the max-height as needed */
+    /* border: 1px solid var(--primary-color); Add border */
+    padding: 10px; /* Add padding */
+    margin: auto; /* Center the container horizontally */
+    /* box-sizing: border-box; Ensure padding is included in width */
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+#table-container {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    overflow-y: auto; /* Enable vertical scrolling */
+    
+}#filter-container {
+   
+    position: sticky;
+    width: 73%;
+    left: 12%;
+    padding: 0.1%;
+    text-align: center;
+}
+
+/* Style for the filter dropdowns */
+.filter-select {
+    width: 11%; /* Set the width to 100% to match the container */
+    margin-bottom: 10px; /* Add margin below each dropdown */
+    text-align: center;
+}
+
+/* Style for the label */
+
+
+/* Add class to adjust width of filter container based on table width */
+.adjust-width {
+    width: calc(100% - 600px); /*Subtract padding and margin of table*/
+    max-width: 600px; /*set maximum width if needed*/
+    margin-left: auto; /*Center the container*/
+    margin-right: auto; /*Center the container*/
+}
+
+</style>
 </head>
 <body>
 
-    <header>
+    <header style="position:fixed;background-color:#FFFFFF;padding-bottom:0;">
         <h1>ICT Web Accessibility<h1>
+            <!-- <nav id="nav1" style="margin-right:40px;width:50%;justify-self:center;margin-left:25%;margin-bottom:10px;">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index2.html">Verified Sites Portal</a></li>
+                    <li><a href="Top20.html">Demo Filter tab</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav> -->
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -23,47 +332,65 @@
                     <li><a href="table4.html">level A error rate %</a></li>
                     <li><a href="table5.html">A checker to A</a></li>
                     <li><a href="table6.html">A Checker to AA Checker</a></li>
+                    <li><a href="table7.html">Wave Tool Validation</a></li>
                     <li><a href="table8.html">Wave Tool</a></li>
                 </ul>
             </nav>
     </header>
-    <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 7</p>
+    <main style="padding-top:100px;">
+        <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 7</p>
     <p style = "text-align:center;font-size:150%;font-weight:200;"> Table 7 The results of Total Validator, WAVE tool, HTML and CSS validation</p>
-    <main>
+    <div style="padding-top:90;">
         <div>
-            <label for="limit-select">Show:</label>
-            <select id="limit-select">
-                 <option value="15">15</option>
-                <option value="20">20</option>
+            <label for="limitSelect" aligntext ="right">Rows per page:</label>
+            <select id="limitSelect" onchange="changeRowsPerPage()">
+                <option value="10">10</option>
+                <option value="15">15</option>
                 <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="75">75</option>
-                <option value="64"selected>All</option>
+                <option value="35">35</option>
+                <option value="45">45</option>
+                <option value="100">All</option>
             </select>
         </div>
-        <div id="table-container"></div>
+        <div id="filter-container"></div>
+        <div id="table-container-wrapper"> <!-- Add wrapper for the table container -->
+            <div id="table-container"></div> <!-- Move the table container inside the wrapper -->
+        </div>
+        <div id="pagination"></div>
+        <div id="navigation">
+            <button id="prevBtn" onclick="prevPage()">Previous</button>
+            <button id="nextBtn" onclick="nextPage()">Next</button>
+        </div>
+    </div>
     </main>
+    
 
 
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const limitSelect = document.getElementById('limit-select');
+            const filterContainer = document.getElementById('filter-container');
             const tableContainer = document.getElementById('table-container');
-
+            const paginationContainer = document.getElementById('pagination');
+            const navigationContainer = document.getElementById('navigation');
+            const limitSelect = document.getElementById('limitSelect');
+            let rowsPerPage = parseInt(limitSelect.value);
+            let currentPage = 1;
+            let headerRow = '';
+            let totalPages = 0;
             const fetchDataAndRenderTable = function() {
-                const limit = parseInt(limitSelect.value);
                 fetch('https://raw.githubusercontent.com/santosh1664/egovern/csv/csv%20Files/Table7.csv')
                     .then(response => response.text())
                     .then(csv => {
-                        let rows = csv.split('\n').slice(2); // Slice from 0 to include header row
-                        if (limit !== 0) {
-                            rows = rows.slice(0, limit);
-                        }
-                        let tableHtml = '<table>';
-                        let i = 0;
+                        const rows = csv.split('\n').slice(2);
+                        totalPages = Math.ceil(rows.length / rowsPerPage); // Exclude header row from count
+                        let startIndex = (currentPage - 1) * rowsPerPage;
+                        let endIndex = Math.min(startIndex + rowsPerPage, rows.length);
+                        const rowsToShow = rows.slice(startIndex, endIndex + 0); // Include header row
+                        let tableHtml = '';
+                        tableHtml = '<table>';
                             tableHtml += '<thead>';
-                                tableHtml += '<tr>';
+                                tableHtml += '<tr class="header-row">';
                                     tableHtml += '<th style="text-align:center;border-bottom:none;">Website</th>';
                                     tableHtml += '<th style="border-right:none;"></th>';
                                     tableHtml += '<th style="border-left:none;border-right:none;"></th>';
@@ -74,7 +401,7 @@
                                     tableHtml += '<th style="text-align:center;border-bottom:none;">HTML</th>';
                                     tableHtml += '<th style="text-align:center;border-bottom:none;">CSS</th>';
                                 tableHtml +='</tr>';
-                                tableHtml += '<tr>';
+                                tableHtml += '<tr class="header-row">';
                                     tableHtml += '<th style="text-align:center;border-top:none">ID</th>';
                                     tableHtml += '<th style="text-align:center;">Errors</th>';
                                     tableHtml += '<th style="text-align:center;">Alerts</th>';
@@ -88,22 +415,95 @@
                             tableHtml += '</thead>';
                             
 
-                        rows.forEach(row => {
-                                const columns = row.split(',');
-                                tableHtml += '<tr>';
-                                
-                                columns.forEach(column => {
+                            rowsToShow.slice(0).forEach(row => { // Skip the first row (header)
+                            const columns = row.split(',');
+                            tableHtml += '<tr>';
+                            columns.forEach(column => {
                                 tableHtml += `<td>${column}</td>`;
-                                });
-                                tableHtml += '</tr>';
-
+                            });
+                            tableHtml += '</tr>';
                         });
                         tableHtml += '</table>';
                         tableContainer.innerHTML = tableHtml;
+
+                        const headerRow = tableContainer.querySelector('.header-row');
+                        let filterHtml = '<tr class="filter-row">';
+                        headerRow.querySelectorAll('th').forEach((th, colIndex) => {
+                            const uniqueValues = Array.from(new Set(rows.map(row => row.split(',')[colIndex])));
+                            filterHtml += `<td align="center"><select class="filter-select"><option value="">search here</option>`;
+                            uniqueValues.forEach(value => {
+                                filterHtml += `<option value="${value}">${value}</option>`;
+                            });
+                            filterHtml += `</select></td>`;
+                        });
+                        filterHtml += '</tr>';
+                        filterContainer.innerHTML = filterHtml;
+
+                        const filterSelects = filterContainer.querySelectorAll('.filter-select');
+                        filterSelects.forEach((select, colIndex) => {
+                            select.addEventListener('change', function() {
+                                const filterValue = this.value.toLowerCase();
+                                const rows = tableContainer.querySelectorAll('tr:not(.header-row)');
+                                rows.forEach(row => {
+                                    const cell = row.querySelectorAll('td')[colIndex];
+                                    if (filterValue === "" || cell.textContent.toLowerCase() === filterValue) {
+                                        row.style.display = '';
+                                    } else {
+                                        row.style.display = 'none';
+                                    }
+                                });
+                            });
+                        });
+
+
+                        renderPagination(totalPages);
+                        renderNavigation();
                     })
                     .catch(error => console.error('Error fetching CSV:', error));
             };
 
+            const renderPagination = function(totalPages) {
+                let paginationHtml = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `<button onclick="goToPage(${i})">${i}</button>`;
+                }
+                paginationContainer.innerHTML = paginationHtml;
+            };
+
+            const renderNavigation = function() {
+                navigationContainer.innerHTML = '';
+                if (currentPage > 1) {
+                    navigationContainer.innerHTML += `<button onclick="prevPage()">Previous</button>`;
+                }
+                if (currentPage < totalPages) {
+                    navigationContainer.innerHTML += `<button onclick="nextPage()">Next</button>`;
+                }
+            };
+
+            const changeRowsPerPage = function() {
+            rowsPerPage = parseInt(limitSelect.value);
+            currentPage = 1;
+            fetchDataAndRenderTable();
+            };
+
+            window.goToPage = function(page) {
+                currentPage = page;
+                fetchDataAndRenderTable();
+            };
+
+            window.prevPage = function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    fetchDataAndRenderTable();
+                }
+            };
+
+            window.nextPage = function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    fetchDataAndRenderTable();
+                }
+            };
             // Initial data fetch and table rendering
             fetchDataAndRenderTable();
 
@@ -111,8 +511,8 @@
             limitSelect.addEventListener('change', fetchDataAndRenderTable);
         });
     </script>
-    <hr id="horizontal">
     <footer>
+        <!-- <hr id="horizontal" style="margin-top:0;"> -->
         <div id="contact" align="center">
             <h2>Contact Us</h2>
             <p>Email: contact@example.com</p>
