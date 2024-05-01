@@ -5,17 +5,25 @@
     --accent-color: #000000; /* Red */
     --text-color: #000; /* Dark Gray */
     --background-color: #fff; /* White */
+    --footer-color:  #ede9b6a9;; /* cement color */
 }
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    padding-top:0;
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
+header
+{
+justify-self:center;
+width:100%;
+background-color:white;
 
+}
 
 h1 {
     text-align: center;
@@ -56,7 +64,7 @@ tr:hover {
     background-color: var(--secondary-color);
 }
 
-nav {
+ /* nav {
   background-color: #007bb5;
   color: #A0E9FF;
   
@@ -65,7 +73,46 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+/* nav {
+  background-color: #53d1d7;
+  color: #A0E9FF;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+ul {
+  list-style-type: none;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  
+}  */
+
+nav {
+  background-color: #53d1d7;
+  color: #a0e9ff;
+  margin-bottom: 0px;
+  display: flex;
+  position: relative;
+  width: 100%;
+left: 0%;
+  justify-content: center;
 }
+/* nav{
+  background-color: #007bb5;
+  color: #A0E9FF;
+  
+  padding: 0px 0px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 ul {
   list-style-type: none;
   height: 45px;
@@ -78,7 +125,7 @@ ul {
 }
 li {
     display: inline-block;
-    margin-right:75px;
+    margin: right 55px;
     /*
     padding: 10px 10px;
     margin: 0;
@@ -89,15 +136,25 @@ li {
 }
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-size: 18px;
-    padding: 10px 10px;
+    display:flex;
+    padding: 10px 10px; 
     border-radius: 5px;
     transition: background-color 0.3s;
-}
+} 
+
+/* a {
+  text-decoration: none;
+  color: #090909;
+  font-size: 13.5px;
+  display: flex;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+} */
 a:hover {
     background-color: var(--secondary-color);
-    background-color: #66cfd8;
+    background-color: #eef4f5;
     padding: 10px 10px;
 }
 
@@ -154,7 +211,7 @@ bdy {
 }
 body {
     height: 100%;
-    padding: 20px;
+    padding: 0px;
     margin: 0;
   }
   
@@ -169,7 +226,7 @@ body {
     float: left;
     width: 50%;
     padding:10px;
-    height: 400px;
+    height: 500px;
     margin: auto;
   }
   .column5{
@@ -236,5 +293,5 @@ body {
 }
 footer
 {
-  background-color:#f1f3f4;
+  background-color:var(--footer-color);
 }

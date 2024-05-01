@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body style="padding-top:0px;">
 
-    <header>
+    <header style="position:sticky;background-color:#FFFFFF;padding-bottom:0;">
         <h1>ICT Web Accessibility<h1>
             <nav>
                 <ul>
@@ -23,45 +23,57 @@
                     <li><a href="table4.html">level A error rate %</a></li>
                     <li><a href="table5.html">A checker to A</a></li>
                     <li><a href="table6.html">A Checker to AA Checker</a></li>
+                    <li><a href="table7.html">Wave Tool Validation</a></li>
                     <li><a href="table8.html">Wave Tool</a></li>
                 </ul>
             </nav>
     </header>
-    <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 2</p>
-    <p style = "text-align:center;font-size:150%;font-weight:200;"> Table 2 Achecker and Total Validator webpage evaluation results for all levels A, AA, and AAA</p>
-    <main>
+    <main style="padding-top:0px;">
         <div>
-            <label for="limit-select">Show:</label>
-            <select id="limit-select">
-                 <option value="15">15</option>
-                <option value="20">20</option>
+            <p style = "text-align:center;font-size:200%;font-weight:bold;">Table 2 AChecker</p>
+            <label for="limitSelect" aligntext ="right">Rows per page:</label>
+            <select id="limitSelect" onchange="changeRowsPerPage()">
+                <option value="10">10</option>
+                <option value="15">15</option>
                 <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="75">75</option>
-                <option value="64"selected>All</option>
+                <option value="35">35</option>
+                <option value="45">45</option>
+                <option value="100">All</option>
             </select>
         </div>
-        <div id="table-container"></div>
+        <div id="table-container-wrapper"> <!-- Add wrapper for the table container -->
+            <div id="table-container"></div> <!-- Move the table container inside the wrapper -->
+        </div>
+        <div id="pagination"></div>
+        <div id="navigation">
+            <button id="prevBtn" onclick="prevPage()">Previous</button>
+            <button id="nextBtn" onclick="nextPage()">Next</button>
+        </div>
     </main>
-
 
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const limitSelect = document.getElementById('limit-select');
             const tableContainer = document.getElementById('table-container');
+            const paginationContainer = document.getElementById('pagination');
+            const navigationContainer = document.getElementById('navigation');
+            const limitSelect = document.getElementById('limitSelect');
+            let rowsPerPage = parseInt(limitSelect.value);
+            let currentPage = 1;
+            let headerRow = '';
+            let totalPages = 0;
 
             const fetchDataAndRenderTable = function() {
-                const limit = parseInt(limitSelect.value);
                 fetch('https://raw.githubusercontent.com/santosh1664/egovern/csv/csv%20Files/Table2.csv')
                     .then(response => response.text())
                     .then(csv => {
-                        let rows = csv.split('\n').slice(2); // Slice from 0 to include header row
-                        if (limit !== 0) {
-                            rows = rows.slice(0, limit);
-                        }
-                        let tableHtml = '<table>';
-                        let i = 0;
+                        const rows = csv.split('\n').slice(2);
+                        totalPages = Math.ceil(rows.length / rowsPerPage); // Exclude header row from count
+                        let startIndex = (currentPage - 1) * rowsPerPage;
+                        let endIndex = Math.min(startIndex + rowsPerPage, rows.length);
+                        const rowsToShow = rows.slice(startIndex, endIndex + 0); // Include header row
+                        let tableHtml = '';
+                        tableHtml = '<table>';
                         tableHtml += '<thead>';
                             tableHtml += '<tr>';
                                 tableHtml += '<th style="text-align:center;border-bottom:none">AChecker</th>';
@@ -98,30 +110,74 @@
                         tableHtml +='</thead>';
 
 
-                        rows.forEach(row => {
-                                const columns = row.split(',');
-                                tableHtml += '<tr>';
-                                
-                                columns.forEach(column => {
+                        rowsToShow.slice(0).forEach(row => { // Skip the first row (header)
+                            const columns = row.split(',');
+                            tableHtml += '<tr>';
+                            columns.forEach(column => {
                                 tableHtml += `<td>${column}</td>`;
-                                });
-                                tableHtml += '</tr>';
+                            });
+                            tableHtml += '</tr>';
                         });
                         tableHtml += '</table>';
                         tableContainer.innerHTML = tableHtml;
+
+                        renderPagination(totalPages);
+                        renderNavigation();
                     })
                     .catch(error => console.error('Error fetching CSV:', error));
             };
 
+            const renderPagination = function(totalPages) {
+                let paginationHtml = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `<button onclick="goToPage(${i})">${i}</button>`;
+                }
+                paginationContainer.innerHTML = paginationHtml;
+            };
+
+            const renderNavigation = function() {
+                navigationContainer.innerHTML = '';
+                if (currentPage > 1) {
+                    navigationContainer.innerHTML += `<button onclick="prevPage()">Previous</button>`;
+                }
+                if (currentPage < totalPages) {
+                    navigationContainer.innerHTML += `<button onclick="nextPage()">Next</button>`;
+                }
+            };
+
+            const changeRowsPerPage = function() {
+            rowsPerPage = parseInt(limitSelect.value);
+            currentPage = 1;
+            fetchDataAndRenderTable();
+            };
+
+            window.goToPage = function(page) {
+                currentPage = page;
+                fetchDataAndRenderTable();
+            };
+
+            window.prevPage = function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    fetchDataAndRenderTable();
+                }
+            };
+
+            window.nextPage = function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    fetchDataAndRenderTable();
+                }
+            };
             // Initial data fetch and table rendering
             fetchDataAndRenderTable();
 
             // Event listener for select element change
-            limitSelect.addEventListener('change', fetchDataAndRenderTable);
+            limitSelect.addEventListener('change', changeRowsPerPage);
         });
     </script>
-    <hr id="horizontal">
     <footer>
+        <!-- <hr id="horizontal" style="margin-top:0;"> -->
         <div id="contact" align="center">
             <h2>Contact Us</h2>
             <p>Email: contact@example.com</p>
